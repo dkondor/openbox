@@ -20,7 +20,10 @@ MINOR=$(echo $VER | cut -d . -f 2)
 
 # run GNOME with Openbox as its window manager
 
-if test $MAJOR -lt 2 || (test $MAJOR = 2 && test $MINOR -le 22); then
+if test -z $VER; then
+  # newest gnome-session does not support the version flag??
+  exec gnome-session --session=openbox-gnome
+elif test $MAJOR -lt 2 || (test $MAJOR = 2 && test $MINOR -le 22); then
   # older gnome-session was easy to work with
   export WINDOW_MANAGER="@bindir@/openbox"
   exec gnome-session --choose-session=openbox-session "$@"
