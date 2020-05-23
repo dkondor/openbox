@@ -1,5 +1,8 @@
 AC_PREREQ([2.54])
 AC_INIT([openbox], [3.6.1], [http://bugzilla.icculus.org])
+
+test "$sysconfdir" = '${prefix}/etc' && sysconfdir=/etc
+
 AC_CONFIG_SRCDIR([openbox/openbox.c])
 
 AM_INIT_AUTOMAKE([foreign])
